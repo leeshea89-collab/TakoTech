@@ -33,6 +33,7 @@ import appeng.api.storage.data.IAEItemStack;
 import appeng.core.features.AEFeature;
 import appeng.core.localization.GuiText;
 import appeng.items.contents.CellConfig;
+import appeng.tile.inventory.IAEStackInventory;
 import appeng.items.contents.CellUpgrades;
 import appeng.util.item.AEItemStack;
 import appeng.util.item.OreHelper;
@@ -368,7 +369,7 @@ public class ItemOreStorageCell extends BaseAECellItem implements IStorageCell, 
      * @return 返回存储单元的配置槽，若没有则返回 null
      */
     @Override
-    public IInventory getConfigInventory(ItemStack is) {
+    public IAEStackInventory getConfigAEInventory(ItemStack is) {
         return new CellConfig(is);
     }
 
