@@ -322,7 +322,7 @@ public class OreStorageCellInventory implements ITakoCellInventory {
 
         // 检查输入物品是否为元件
         if (isStorageCell(input)) {
-            final IMEInventory<IAEItemStack> meInventory = getCell(input.getItemStack(), null, ITEM_STACK_TYPE);
+            final IMEInventory<?> meInventory = getCell(input.getItemStack(), null, ITEM_STACK_TYPE);
 
             // 如果物品堆栈是有效的元件且非空，则直接返回输入物品堆栈
             if (meInventory != null && !this.isEmpty(meInventory)) {
@@ -483,8 +483,11 @@ public class OreStorageCellInventory implements ITakoCellInventory {
      * @param meInventory 物品元件的库存实例
      * @return 如果物品元件为空，返回 true；否则返回 false
      */
-    private boolean isEmpty(final IMEInventory<IAEItemStack> meInventory) {
-        boolean isEmpty = meInventory.getAvailableItems(
+    @SuppressWarnings("unchecked")
+    private boolean isEmpty(final IMEInventory<?> meInventory) {
+        // getCell is called with ITEM_STACK_TYPE above; narrow its wildcard API type.
+        IMEInventory<IAEItemStack> itemInventory = (IMEInventory<IAEItemStack>) meInventory;
+        boolean isEmpty = itemInventory.getAvailableItems(
             AEApi.instance()
                 .storage()
                 .createItemList(),
