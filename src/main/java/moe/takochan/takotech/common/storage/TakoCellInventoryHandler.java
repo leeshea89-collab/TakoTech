@@ -12,7 +12,7 @@ import appeng.api.config.Upgrades;
 import appeng.api.implementations.items.IUpgradeModule;
 import appeng.api.storage.ICellCacheRegistry;
 import appeng.api.storage.IMEInventory;
-import appeng.api.storage.StorageChannel;
+import static appeng.util.item.AEItemStackType.ITEM_STACK_TYPE;
 import appeng.api.storage.data.IAEItemStack;
 import appeng.api.storage.data.IItemList;
 import appeng.me.storage.MEInventoryHandler;
@@ -27,7 +27,7 @@ public class TakoCellInventoryHandler extends MEInventoryHandler<IAEItemStack>
     implements ITakoCellInventoryHandler, ICellCacheRegistry {
 
     public TakoCellInventoryHandler(IMEInventory<IAEItemStack> meInventory) {
-        super(meInventory, StorageChannel.ITEMS);
+        super(meInventory, ITEM_STACK_TYPE);
         final ITakoCellInventory ci = this.getCellInv();
 
         // init
