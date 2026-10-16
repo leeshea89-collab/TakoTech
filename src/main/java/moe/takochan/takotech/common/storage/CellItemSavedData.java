@@ -49,7 +49,7 @@ public class CellItemSavedData extends WorldSavedData {
         CellItemSavedData data = (CellItemSavedData) storage.loadData(CellItemSavedData.class, DATA_NAME);
         if (data == null) {
             data = new CellItemSavedData();
-            storage.setData(Reference.MODID, data);
+            storage.setData(DATA_NAME, data);
         }
         INSTANCE = data;
     }
