@@ -1,6 +1,7 @@
 package moe.takochan.takotech.common.storage.inventory;
 
 import static appeng.me.storage.CellInventory.getCell;
+import static appeng.util.item.AEItemStackType.ITEM_STACK_TYPE;
 
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -321,7 +322,7 @@ public class OreStorageCellInventory implements ITakoCellInventory {
 
         // 检查输入物品是否为元件
         if (isStorageCell(input)) {
-            final IMEInventory<IAEItemStack> meInventory = getCell(input.getItemStack(), null);
+            final IMEInventory<IAEItemStack> meInventory = getCell(input.getItemStack(), null, ITEM_STACK_TYPE);
 
             // 如果物品堆栈是有效的元件且非空，则直接返回输入物品堆栈
             if (meInventory != null && !this.isEmpty(meInventory)) {
