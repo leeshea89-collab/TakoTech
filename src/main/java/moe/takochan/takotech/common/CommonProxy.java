@@ -7,6 +7,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
+import cpw.mods.fml.common.event.FMLServerStoppingEvent;
 import moe.takochan.takotech.client.gui.GuiType;
 import moe.takochan.takotech.common.event.ItemTooltipEventHandler;
 import moe.takochan.takotech.common.event.PlayerDestroyItemEventHandler;
@@ -63,7 +64,7 @@ public class CommonProxy {
     // register server commands in this event handler (Remove if not needed)
     public void serverStarting(FMLServerStartingEvent event) {}
 
-    public void serverStopping(FMLServerStartingEvent event) {
+    public void serverStopping(FMLServerStoppingEvent event) {
         CellItemSavedData cellData = CellItemSavedData.getInstance();
         if (cellData != null) {
             cellData.setDirty(true);
